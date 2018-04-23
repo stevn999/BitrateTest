@@ -3,8 +3,9 @@ let max = 100
 let last = 0
 
 function setup() {
-  frameRate(100)
+  frameRate(10000)
   createCanvas(windowWidth, windowHeight)
+  slider = createSlider(0, 1500, 0);
   for (var i = 0; i < max; i++) {
     dots.push(new Dot())
   }
@@ -15,6 +16,7 @@ function windowResized() {
 }
 
 function draw() {
+  max = slider.value()
   last = Date.now()
   while (dots.length < max) {
     dots.push(new Dot())
@@ -30,12 +32,10 @@ function draw() {
   while (dots.length > max) {
     dots.shift()
   }
-  // if (Date.now()-last > 2) {
-  //   max--
-  //   console.log(max);
-  // }else {
-  //   max++
-  // }
+  if (Date.now()-last > 20) {
+    slider.value(slider.value()-1)
+    console.log(max);
+  }
 }
 class Dot {
   constructor() {
