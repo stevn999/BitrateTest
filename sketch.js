@@ -5,7 +5,7 @@ let last = 0
 function setup() {
   frameRate(10000)
   createCanvas(windowWidth, windowHeight)
-  slider = createSlider(0, 1500, 0);
+  slider = createSlider(0, 1500, 1000);
   for (var i = 0; i < max; i++) {
     dots.push(new Dot())
   }
