@@ -29,6 +29,9 @@ function draw() {
       dots.splice(i, 1)
     }
   }
+  textSize(32);
+  textAlign(CENTER);
+  text('These lines will be lost in low qualities', width/2, (frameCount+(height/3))%height- 10);
   for (var i = 0; i < 4; i++) {
     line(0,(frameCount+(i*height/3))%height,width,(frameCount+(i*height/3))%height)
     line(0,(frameCount+2+(i*height/3))%height,width,(frameCount+2+(i*height/3))%height)
@@ -57,8 +60,8 @@ class Dot {
     if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
       this.alive = false
     }
-    this.y += random(-4, 5) + (mouseY - (height / 2)) / (height / 2)
-    this.x += random(-5, 5) + (mouseX - (width / 2)) / (width / 2)
+    this.y += random(-4, 5) + (mouseY - (height / 2)) / (height)
+    this.x += random(-5, 5) + (mouseX - (width / 2)) / (width)
     push()
 
     colorMode(HSB, 256)
