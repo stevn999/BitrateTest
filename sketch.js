@@ -33,7 +33,7 @@ function draw() {
     dots.shift()
   }
   if (Date.now()-last > 20) {
-    slider.value(slider.value()-1)
+    slider.value(slider.value()-(19-(Date.now()-last > 20)))
     console.log(max);
   }
 }
