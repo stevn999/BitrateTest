@@ -29,10 +29,19 @@ function draw() {
       dots.splice(i, 1)
     }
   }
+  for (var i = 0; i < 4; i++) {
+    line(0,(frameCount+(i*height/3))%height,width,(frameCount+(i*height/3))%height)
+    line(0,(frameCount+2+(i*height/3))%height,width,(frameCount+2+(i*height/3))%height)
+    push()
+    stroke(255)
+    line(0,(frameCount+1+(i*height/3))%height,width,(frameCount+1+(i*height/3))%height)
+    pop()
+  }
+
   while (dots.length > max) {
     dots.shift()
   }
-  if (Date.now()-last > 20) {
+  if (Date.now()-last > 25) {
     slider.value(slider.value()-(19-(Date.now()-last > 20)))
     console.log(max);
   }
@@ -42,7 +51,7 @@ class Dot {
     this.alive = true
     this.x = random(width)
     this.c = random(255)
-    this.y = random(height)
+    this.y = random(height/3,height)
   }
   update() {
     if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
